@@ -10,6 +10,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -25,7 +26,26 @@ public class StickerGenerator {
 
     public void creating(InputStream inputStream, String filename, Double rating) throws Exception{
 
+        //definicao de frase e reação
+
+        String word;
+        InputStream reactionImage;
         
+
+        if (rating >= 9){
+            word = "TOPZERA";
+            reactionImage = new FileInputStream(new File("imagens/eu.jpeg"));
+
+        }
+        else if (rating >= 8 && rating< 9){
+            word = "LEGALZINHO";
+            reactionImage = new FileInputStream(new File("imagens/serious.jpg"));
+
+        }
+        else{
+            word = "Mais ou menos";
+            reactionImage = new FileInputStream(new File("imagens/serious.jpg"));
+        }
 
         // ler a imagem
         
@@ -43,6 +63,12 @@ public class StickerGenerator {
         Graphics2D graphics = (Graphics2D) newImage.getGraphics();
         graphics.drawImage(originalImage, 0, 0, null);
 
+        //Colocar a imagem de sobreposição
+
+        BufferedImage coverImage = ImageIO.read(reactionImage);
+        int coverImagePositionY = newHeight - coverImage.getHeight();
+        graphics.drawImage(coverImage, 0, coverImagePositionY, null);
+
         //configurar fonte
         var font = new Font("Impact", Font.BOLD, 80 );
         graphics.setFont(font);
@@ -50,21 +76,10 @@ public class StickerGenerator {
 
         
 
-        // escrever uam frase na nova imagem
+        // escrever uma frase na nova imagem
 
-        String word = "";
+       
 
-        if (rating >= 9){
-            word = "TOPZERA";
-
-        }
-        else if (rating >= 8 && rating< 9){
-            word = "LEGALZINHO";
-
-        }
-        else{
-            word = "Mais ou menos";
-        }
 
         
         FontMetrics fontMetrics = graphics.getFontMetrics();
@@ -87,7 +102,7 @@ public class StickerGenerator {
         graphics.draw(outline);
         graphics.setClip(outline);
 
-        
+       
 
         // escrever a nova imagem em um arquivo
         Files.createDirectories(Paths.get("output"));
