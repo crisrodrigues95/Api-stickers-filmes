@@ -5,7 +5,7 @@ Nessa primeira Aula foi gerado um Script para consumir uma API com dados de film
 
 ### Segunda aula
 Na segunda aula foi criado o método para criar figurinhas para Whatsapp utilizando os pôsteres de filmes disponibilizados na API do IMBD.
-Eu coloquei textos diferntes que variam de acordo com a nota do filme pelo IMDB
+Eu coloquei textos diferentes que variam de acordo com a nota do filme pelo IMDB
 
 #### Exemplo:
 ![Exemplo](https://github.com/crisrodrigues95/Api-stickers-filmes/blob/main/output/The%20Dark%20Knight.png)
