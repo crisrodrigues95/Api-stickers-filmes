@@ -21,7 +21,7 @@ public class StickerGenerator {
 
     
 
-    private TextLayout textLayout;
+    
 
     public void creating(InputStream inputStream, String filename, Double rating) throws Exception{
 
