@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "application.App",
+            "projectName": "alura-stickers_27357a08"
+        },
+        {
+            "type": "java",
             "name": "StickerGenerator",
             "request": "launch",
             "mainClass": "StickerGenerator",
